@@ -111,7 +111,7 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
         try {
             Uri path = Uri.parse(soundPath);
             RingtoneManager.setActualDefaultRingtoneUri(
-               this, RingtoneManager.TYPE_ALARM, path
+                getActivity().getApplicationContext(), RingtoneManager.TYPE_ALARM, path
             );
         } catch (Exception e) {
             e.printStackTrace();
