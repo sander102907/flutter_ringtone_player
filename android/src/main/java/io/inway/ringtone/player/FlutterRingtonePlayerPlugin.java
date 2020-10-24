@@ -48,7 +48,7 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
                 setAlarmSound(getMethodCallArgument(call, "soundPath", String.class));
                 result.success(null);
             } else if (methodName.equals("getDefaultAlarmSound")) {
-                result.success(getDefaultAlarmSound(););
+                result.success(getDefaultAlarmSound());
             }
         } catch (Exception e) {
             result.error("Exception", e.getMessage(), null);
