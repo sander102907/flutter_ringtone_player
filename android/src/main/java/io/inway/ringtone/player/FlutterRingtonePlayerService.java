@@ -153,6 +153,7 @@ public class FlutterRingtonePlayerService extends Service {
             return path;
 
          } catch (Exception e) {
+            e.printStackTrace();
             switch (kind) {
                 case 1:
                     ringtoneType = RingtoneManager.TYPE_ALARM;
