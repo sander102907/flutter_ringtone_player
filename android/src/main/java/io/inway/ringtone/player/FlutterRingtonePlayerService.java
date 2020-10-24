@@ -147,13 +147,13 @@ public class FlutterRingtonePlayerService extends Service {
         // try {
         //     Uri path = Uri.parse(soundPath);
         //     RingtoneManager.setActualDefaultRingtoneUri(
-        //        getApplicationContext(), RingtoneManager.TYPE_ALARM, path
+        //        getApplicationContext(), RingtoneManager.TYPE_RINGTONE, path
         //     );
 
         //     return path;
 
         //  } catch (Exception e) {
-            // e.printStackTrace();
+        //     e.printStackTrace();
             switch (kind) {
                 case 1:
                     ringtoneType = RingtoneManager.TYPE_ALARM;
