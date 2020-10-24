@@ -12,8 +12,9 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 import android.media.RingtoneManager;
 import android.media.Ringtone;
 import android.net.Uri;
-
+import android.database.Cursor;
 import java.util.Map;
+import java.util.HashMap;
 
 /**
  * FlutterRingtonePlayerPlugin
@@ -131,14 +132,14 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
     }
 
     private Map<String, Uri> getAlarmSounds() {
-        Cursor tonesCursor = ringtoneManager.getCursor();
+        Cursor tonesCursor = RingtoneManager.getCursor();
         Map sounds = new HashMap<String, Uri>();
         if (tonesCursor.moveToFirst()) {
             do { 
-                int id = tonesCursor.getInt(ID_COLUMN_INDEX);
-                String uriString = tonesCursor.getString(URI_COLUMN_INDEX);
+                int id = tonesCursor.getInt(RingtoneManager.ID_COLUMN_INDEX);
+                String uriString = tonesCursor.getString(RingtoneManager.URI_COLUMN_INDEX);
                 Uri uri = Uri.parse(uriString + "/" + id);
-                String name = tonesCursor.getString(TITLE_COLUMN_INDEX);
+                String name = tonesCursor.getString(RingtoneManager.TITLE_COLUMN_INDEX);
                 sounds.put(name, uri);
             } while (tonesCursor.moveToNext()); 
         }
