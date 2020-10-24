@@ -42,6 +42,9 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
             } else if (methodName.equals("stop")) {
                 stopRingtone();
                 result.success(null);
+            } else if (methodName.equals("setAlarmSound")) {
+                setAlarmSound(getMethodCallArgument(call, "soundPath", String.class));
+                result.success(null);
             }
         } catch (Exception e) {
             result.error("Exception", e.getMessage(), null);
@@ -101,4 +104,14 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
     private Intent createServiceIntent() {
         return new Intent(context, FlutterRingtonePlayerService.class);
     }
+
+    private void setAlarmSound(String soundPath) {
+        try {
+            Uri path = Uri.parse(soundPath);
+            RingtoneManager.setActualDefaultRingtoneUri(
+               getApplicationContext(), RingtoneManager.TYPE_ALARM, path
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 }

@@ -102,4 +102,13 @@ class FlutterRingtonePlayer {
       _channel.invokeMethod('stop');
     } on PlatformException {}
   }
+
+  static Future<void> setAlarmSound({String soundPath}) async {
+    try {
+      var args = <String, dynamic>{};
+      if (soundPath != null) args['soundPath'] = soundPath;
+
+      _channel.invokeMethod('setAlarmSound', args);
+    } on PlatformException {}
+  }
 }
