@@ -124,6 +124,6 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
     private String getDefaultAlarmSound() {
         Uri alarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
         Ringtone ringtoneAlarm = RingtoneManager.getRingtone(context, alarm);
-        return ringtoneAlarm.getTitle();
+        return ringtoneAlarm.getTitle(context);
     }
 }
