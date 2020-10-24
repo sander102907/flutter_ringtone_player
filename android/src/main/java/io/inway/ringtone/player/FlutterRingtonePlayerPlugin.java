@@ -131,7 +131,7 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
         return ringtoneAlarm.getTitle(context);
     }
 
-    private HashMap<String, Uri> getAlarmSounds() {
+    private HashMap<String, String> getAlarmSounds() {
         RingtoneManager ringtoneManager = new RingtoneManager(context);
         Cursor tonesCursor = ringtoneManager.getCursor();
         HashMap sounds = new HashMap<String, Uri>();
@@ -139,9 +139,9 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
             do { 
                 int id = tonesCursor.getInt(RingtoneManager.ID_COLUMN_INDEX);
                 String uriString = tonesCursor.getString(RingtoneManager.URI_COLUMN_INDEX);
-                Uri uri = Uri.parse(uriString + "/" + id);
+                // Uri uri = Uri.parse(uriString + "/" + id);
                 String name = tonesCursor.getString(RingtoneManager.TITLE_COLUMN_INDEX);
-                sounds.put(name, uri);
+                sounds.put(name, uriString);
             } while (tonesCursor.moveToNext()); 
         }
         System.out.println(sounds);
