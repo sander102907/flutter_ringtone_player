@@ -125,6 +125,8 @@ class FlutterRingtonePlayer {
       print('keys: ');
       print(result.keys);
       return result;
-    } on PlatformException {}
+    } catch (e) {
+      print(e);
+    }
   }
 }
