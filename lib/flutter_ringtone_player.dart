@@ -111,4 +111,11 @@ class FlutterRingtonePlayer {
       _channel.invokeMethod('setAlarmSound', args);
     } on PlatformException {}
   }
+
+  static Future<String> getDefaultAlarmSound() async {
+    try {
+      final String result = await _channel.invokeMethod('getDefaultAlarmSound');
+      return result;
+    } on PlatformException {}
+  }
 }
