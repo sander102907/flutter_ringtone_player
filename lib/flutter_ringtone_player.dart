@@ -40,7 +40,8 @@ class FlutterRingtonePlayer {
       double volume,
       bool looping,
       bool asAlarm,
-      AlarmNotificationMeta alarmNotificationMeta}) async {
+      AlarmNotificationMeta alarmNotificationMeta,
+      String soundPath}) async {
     try {
       var args = <String, dynamic>{
         'android': android.value,
@@ -49,7 +50,9 @@ class FlutterRingtonePlayer {
       if (looping != null) args['looping'] = looping;
       if (volume != null) args['volume'] = volume;
       if (asAlarm != null) args['asAlarm'] = asAlarm;
-      if (alarmNotificationMeta != null) args['alarmNotificationMeta'] = alarmNotificationMeta.toMap();
+      if (alarmNotificationMeta != null)
+        args['alarmNotificationMeta'] = alarmNotificationMeta.toMap();
+      if (soundPath != null) args['soundPath'] = soundPath;
 
       _channel.invokeMethod('play', args);
     } on PlatformException {}
@@ -57,14 +60,19 @@ class FlutterRingtonePlayer {
 
   /// Play default alarm sound (looping on Android)
   static Future<void> playAlarm(
-          {double volume, bool looping = true, bool asAlarm = true, AlarmNotificationMeta alarmNotificationMeta}) async =>
+          {double volume,
+          bool looping = true,
+          bool asAlarm = true,
+          AlarmNotificationMeta alarmNotificationMeta,
+          String soundPath}) async =>
       play(
-          android: AndroidSounds.alarm,
-          ios: IosSounds.alarm,
-          volume: volume,
-          looping: looping,
-          asAlarm: asAlarm,
-          alarmNotificationMeta: alarmNotificationMeta,
+        android: AndroidSounds.alarm,
+        ios: IosSounds.alarm,
+        volume: volume,
+        looping: looping,
+        asAlarm: asAlarm,
+        alarmNotificationMeta: alarmNotificationMeta,
+        soundPath: soundPath,
       );
 
   /// Play default notification sound
