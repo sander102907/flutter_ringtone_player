@@ -125,7 +125,7 @@ public class FlutterRingtonePlayerService extends Service {
     }
 
     private Ringtone getConfiguredRingtone(RingtoneMeta meta) {
-        final Uri uri = getRingtoneUri(meta.getKind());
+        final Uri uri = getRingtoneUri(meta.getKind(), meta.getSoundPath());
         final Ringtone ringtone = RingtoneManager.getRingtone(this, uri);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -141,24 +141,34 @@ public class FlutterRingtonePlayerService extends Service {
         return ringtone;
     }
 
-    private Uri getRingtoneUri(int kind) {
+    private Uri getRingtoneUri(int kind, String soundPath) {
         int ringtoneType = -1;
 
-        switch (kind) {
-            case 1:
-                ringtoneType = RingtoneManager.TYPE_ALARM;
-                break;
+        try {
+            Uri path = Uri.parse(soundPath);
+            RingtoneManager.setActualDefaultRingtoneUri(
+               getApplicationContext(), RingtoneManager.TYPE_RINGTONE, path
+            );
 
-            case 2:
-                ringtoneType = RingtoneManager.TYPE_NOTIFICATION;
-                break;
+            return path;
 
-            case 3:
-                ringtoneType = RingtoneManager.TYPE_RINGTONE;
-                break;
+         } catch (Exception e) {
+            switch (kind) {
+                case 1:
+                    ringtoneType = RingtoneManager.TYPE_ALARM;
+                    break;
 
-            default:
-                throwInvalidArgumentsException();
+                case 2:
+                    ringtoneType = RingtoneManager.TYPE_NOTIFICATION;
+                    break;
+
+                case 3:
+                    ringtoneType = RingtoneManager.TYPE_RINGTONE;
+                    break;
+
+                default:
+                    throwInvalidArgumentsException();
+            }
         }
         return RingtoneManager.getDefaultUri(ringtoneType);
     }

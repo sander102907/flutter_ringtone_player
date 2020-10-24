@@ -8,6 +8,7 @@ public class RingtoneMeta implements Serializable {
     private Boolean looping;
     private Boolean asAlarm;
     private AlarmNotificationMeta alarmNotificationMeta;
+    private String soundPath;
 
     public void setKind(int kind) {
         this.kind = kind;
@@ -39,6 +40,14 @@ public class RingtoneMeta implements Serializable {
 
     public boolean getAsAlarm() {
         return Boolean.TRUE.equals(asAlarm);
+    }
+
+    public void setSoundPath(String soundPath) {
+        this.soundPath = soundPath;
+    }
+
+    public String getSoundPath() {
+        return soundPath;
     }
 
     public AlarmNotificationMeta getAlarmNotificationMeta() {

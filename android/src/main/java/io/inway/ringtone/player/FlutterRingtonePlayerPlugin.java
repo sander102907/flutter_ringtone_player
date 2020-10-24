@@ -57,6 +57,7 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
         meta.setKind(getMethodCallArgument(call, "android", Integer.class));
         meta.setLooping(getMethodCallArgument(call, "looping", Boolean.class));
         meta.setAsAlarm(getMethodCallArgument(call, "asAlarm", Boolean.class));
+        meta.setSoundPath(getMethodCallArgument(call, "soundPath", String.class));
         final Double volume = getMethodCallArgument(call, "volume", Double.class);
         if (volume != null) {
             meta.setVolume(volume.floatValue());
