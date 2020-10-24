@@ -119,7 +119,7 @@ class FlutterRingtonePlayer {
     } on PlatformException {}
   }
 
-  static Future<Map> getAlarmSounds() async {
+  static Future<Map<String, Uri>> getAlarmSounds() async {
     try {
       final Map result = await _channel.invokeMethod('getAlarmSounds');
       print('keys: ');
