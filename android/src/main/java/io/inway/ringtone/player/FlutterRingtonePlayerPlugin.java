@@ -132,7 +132,8 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
     }
 
     private Map<String, Uri> getAlarmSounds() {
-        Cursor tonesCursor = RingtoneManager.getCursor();
+        RingtoneManager ringtoneManager = new RingtoneManager();
+        Cursor tonesCursor = ringtoneManager.getCursor();
         Map sounds = new HashMap<String, Uri>();
         if (tonesCursor.moveToFirst()) {
             do { 
