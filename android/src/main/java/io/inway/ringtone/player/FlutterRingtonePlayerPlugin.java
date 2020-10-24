@@ -51,6 +51,9 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
             } else if (methodName.equals("getDefaultAlarmSound")) {
                 result.success(getDefaultAlarmSound());
             }
+            else if (methodName.equals("getAlarmSounds")) {
+                result.success(getAlarmSounds());
+            }
         } catch (Exception e) {
             result.error("Exception", e.getMessage(), null);
         }
@@ -125,5 +128,20 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
         Uri alarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
         Ringtone ringtoneAlarm = RingtoneManager.getRingtone(context, alarm);
         return ringtoneAlarm.getTitle(context);
+    }
+
+    private Map<String, Uri> getAlarmSounds() {
+        Cursor tonesCursor = ringtoneManager.getCursor();
+        Map sounds = new HashMap<String, Uri>;
+        if (tonesCursor.moveToFirst()) {
+            do { 
+                int id = tonesCursor.getInt(ID_COLUMN_INDEX);
+                String uriString = tonesCursor.getString(URI_COLUMN_INDEX);
+                Uri uri = Uri.parse(uriString + "/" + id);
+                String name = tonesCursor.getString(TITLE_COLUMN_INDEX);
+                sounds.put(name, uri);
+            } while (tonesCursor.moveToNext()); 
+        }
+        return sounds;
     }
 }
