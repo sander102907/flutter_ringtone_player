@@ -114,4 +114,5 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 }
