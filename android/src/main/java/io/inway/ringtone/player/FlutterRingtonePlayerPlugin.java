@@ -83,7 +83,7 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
                 final AlarmNotificationMeta notificationMeta = new AlarmNotificationMeta(notificationMetaValues);
                 meta.setAlarmNotificationMeta(notificationMeta);
             } else {
-                // throw new IllegalArgumentException("if asAlarm=true you have to deliver '" + alarmNotificationMetaKey + "'");
+                throw new IllegalArgumentException("if asAlarm=true you have to deliver '" + alarmNotificationMetaKey + "'");
             }
         }
 
