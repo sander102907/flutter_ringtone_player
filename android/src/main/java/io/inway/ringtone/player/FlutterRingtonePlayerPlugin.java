@@ -141,10 +141,9 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
                 String uriString = tonesCursor.getString(RingtoneManager.URI_COLUMN_INDEX);
                 // Uri uri = Uri.parse(uriString + "/" + id);
                 String name = tonesCursor.getString(RingtoneManager.TITLE_COLUMN_INDEX);
-                sounds.put(name, uriString);
+                sounds.put(name, uriString + '/' + id);
             } while (tonesCursor.moveToNext()); 
         }
-        System.out.println(sounds);
         return sounds;
     }
 }
