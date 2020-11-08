@@ -134,9 +134,9 @@ public class FlutterRingtonePlayerService extends Service {
                 ringtone.setVolume(meta.getVolume());
             }
         }
-        if (meta.getAsAlarm()) {
+        // if (meta.getAsAlarm()) {
             ringtone.setStreamType(AudioManager.STREAM_ALARM);
-        }
+        // }
 
         return ringtone;
     }
