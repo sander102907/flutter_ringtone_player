@@ -97,7 +97,8 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
         if (meta.getAsAlarm()) {
             ContextCompat.startForegroundService(context, intent);
         } else {
-            context.startService(intent);
+            ContextCompat.startForegroundService(context, intent);
+            // context.startService(intent);
         }
     }
 
