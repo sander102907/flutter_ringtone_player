@@ -109,6 +109,7 @@ public class FlutterRingtonePlayerService extends Service {
 
             serviceChannel.setLightColor(Color.RED);
             serviceChannel.enableLights(true);
+            .setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
             final NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(serviceChannel);
         }
