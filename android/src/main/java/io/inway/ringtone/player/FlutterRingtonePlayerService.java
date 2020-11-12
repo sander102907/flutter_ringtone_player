@@ -101,7 +101,7 @@ public class FlutterRingtonePlayerService extends Service {
     private void createNotificationChannel() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             final NotificationChannel serviceChannel = new NotificationChannel(CHANNEL_ID, "Foreground service channel",
-                    NotificationManager.IMPORTANCE_DEFAULT);
+                    NotificationManager.IMPORTANCE_HIGH);
 
             serviceChannel.setLightColor(Color.RED);
             serviceChannel.enableLights(true);
