@@ -86,7 +86,7 @@ public class FlutterRingtonePlayerService extends Service {
                 .setFullScreenIntent(pendingIntent, true)
                 .build();
 
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
 
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(2, notification);
