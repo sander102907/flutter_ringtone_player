@@ -72,14 +72,15 @@ public class FlutterRingtonePlayerService extends Service {
         final Class<?> activityClass = getActivityClassLaunchedByNotificationIntent(ringtoneMeta);
         final Intent notificationIntent = new Intent(this, activityClass);
         final int iconDrawableResourceId = getResources().getIdentifier(notificationMeta.getIconDrawableResourceName(), "drawable", getPackageName());
-        final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+        final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         final Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setSmallIcon(iconDrawableResourceId)
                 .setContentTitle(notificationMeta.getContentTitle())
                 .setContentText(notificationMeta.getContentText())
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setSubText(notificationMeta.getSubText())
-                .setContentIntent(pendingIntent)
+                // .setContentIntent(pendingIntent)
                 .setFullScreenIntent(pendingIntent, true)
                 .build();
 
