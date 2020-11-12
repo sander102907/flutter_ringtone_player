@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
-import android.app.NotificationManagerCompat;
 
 
 public class FlutterRingtonePlayerService extends Service {
@@ -85,11 +84,6 @@ public class FlutterRingtonePlayerService extends Service {
                 // .setContentIntent(pendingIntent)
                 .setFullScreenIntent(pendingIntent, true)
                 .build();
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
-
-        // notificationId is a unique int for each notification that you must define
-        notificationManager.notify(2, notification);
 
         startForeground(1, notification);
     }
