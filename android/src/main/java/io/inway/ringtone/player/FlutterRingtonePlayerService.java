@@ -81,8 +81,8 @@ public class FlutterRingtonePlayerService extends Service {
                 .setContentText(notificationMeta.getContentText())
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setSubText(notificationMeta.getSubText())
-                // .setContentIntent(pendingIntent)
-                .setFullScreenIntent(pendingIntent, true)
+                .setContentIntent(pendingIntent)
+                // .setFullScreenIntent(pendingIntent, true)
                 .build();
 
         startForeground(1, notification);
