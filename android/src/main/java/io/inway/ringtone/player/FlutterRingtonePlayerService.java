@@ -90,7 +90,7 @@ public class FlutterRingtonePlayerService extends Service {
                 .build();
 
         startForeground(1, notification);
-        unlockScreen(activityClass);
+        unlockScreen();
     }
 
     private void stopRingtone() {
@@ -133,8 +133,8 @@ public class FlutterRingtonePlayerService extends Service {
         }
     }
 
-    private void unlockScreen(Class<?> activityClass) {
-        Window window = activityClass.getWindow();
+    private void unlockScreen() {
+        Window window = ((Activity) getContext()).getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
         window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
