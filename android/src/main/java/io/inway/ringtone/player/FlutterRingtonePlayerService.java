@@ -76,8 +76,8 @@ public class FlutterRingtonePlayerService extends Service {
         int requestID = (int) System.currentTimeMillis();
 
         final Class<?> activityClass = getActivityClassLaunchedByNotificationIntent(ringtoneMeta);
-        // final Intent notificationIntent = new Intent(this, activityClass);
-        final Intent notificationIntent = new Intent(this, typeof(AlarmActivity));
+        final Intent notificationIntent = new Intent(this, activityClass);
+        // final Intent notificationIntent = new Intent(this, typeof(AlarmActivity));
         final int iconDrawableResourceId = getResources().getIdentifier(notificationMeta.getIconDrawableResourceName(), "drawable", getPackageName());
         final PendingIntent pendingIntent = PendingIntent.getActivity(this, requestID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         System.out.println(activityClass);
