@@ -32,7 +32,6 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
     public static void registerWith(Registrar registrar) {
         final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_ringtone_player");
         channel.setMethodCallHandler(new FlutterRingtonePlayerPlugin(registrar.context()));
-        System.out.println(registrar.activity());
     }
 
     @Override

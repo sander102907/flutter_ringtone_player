@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import android.os.PowerManager;
 // import android.view.WindowManager;
 // import android.view.WindowManagerFlags;
 // import android.view.Window;
@@ -92,6 +93,9 @@ public class FlutterRingtonePlayerService extends Service {
                 .build();
 
         startForeground(1, notification);
+
+        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "tag");
+        wl.acquire();
         // Window.AddFlags(WindowManagerFlags.ShowWhenLocked | 
         //                 WindowManagerFlags.KeepScreenOn | 
         //                 WindowManagerFlags.DismissKeyguard | 
