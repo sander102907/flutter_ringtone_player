@@ -134,7 +134,7 @@ public class FlutterRingtonePlayerService extends Service {
     }
 
     private void unlockScreen() {
-        Window window = ((Activity) getContext()).getWindow();
+        Window window = ((Activity) this.getContext()).getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
         window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
