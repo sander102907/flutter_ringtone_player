@@ -12,9 +12,9 @@ import android.os.Bundle;
 import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
-import android.view.WindowManager;
-import android.view.WindowManagerFlags;
-import android.view.Window;
+// import android.view.WindowManager;
+// import android.view.WindowManagerFlags;
+// import android.view.Window;
 
 
 public class FlutterRingtonePlayerService extends Service {
@@ -91,10 +91,10 @@ public class FlutterRingtonePlayerService extends Service {
                 .build();
 
         startForeground(1, notification);
-        Window.AddFlags(WindowManagerFlags.ShowWhenLocked | 
-                        WindowManagerFlags.KeepScreenOn | 
-                        WindowManagerFlags.DismissKeyguard | 
-                        WindowManagerFlags.TurnScreenOn);
+        // Window.AddFlags(WindowManagerFlags.ShowWhenLocked | 
+        //                 WindowManagerFlags.KeepScreenOn | 
+        //                 WindowManagerFlags.DismissKeyguard | 
+        //                 WindowManagerFlags.TurnScreenOn);
     }
 
     private void stopRingtone() {
