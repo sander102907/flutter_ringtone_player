@@ -15,6 +15,9 @@ import android.net.Uri;
 import android.database.Cursor;
 import java.util.Map;
 import java.util.HashMap;
+import android.view.WindowManager;
+import android.view.Window;
+
 
 /**
  * FlutterRingtonePlayerPlugin
@@ -96,6 +99,10 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
 
         if (meta.getAsAlarm()) {
             ContextCompat.startForegroundService(context, intent);
+            Window window = ((Activity) context).getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+            window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+            window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
         } else {
             context.startService(intent);
         }
