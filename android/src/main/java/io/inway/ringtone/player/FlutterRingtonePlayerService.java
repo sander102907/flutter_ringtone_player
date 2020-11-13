@@ -78,7 +78,7 @@ public class FlutterRingtonePlayerService extends Service {
         final Intent notificationIntent = new Intent(this, activityClass);
         final int iconDrawableResourceId = getResources().getIdentifier(notificationMeta.getIconDrawableResourceName(), "drawable", getPackageName());
         final PendingIntent pendingIntent = PendingIntent.getActivity(this, requestID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
+        System.out.println(activityClass);
         final Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setSmallIcon(iconDrawableResourceId)
                 .setContentTitle(notificationMeta.getContentTitle())
