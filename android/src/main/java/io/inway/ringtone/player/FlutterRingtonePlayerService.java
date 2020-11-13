@@ -93,7 +93,7 @@ public class FlutterRingtonePlayerService extends Service {
         Window.AddFlags(WindowManagerFlags.ShowWhenLocked | 
                         WindowManagerFlags.KeepScreenOn | 
                         WindowManagerFlags.DismissKeyguard | 
-                        WindowManagerFlags.TurnScreenOn)
+                        WindowManagerFlags.TurnScreenOn);
     }
 
     private void stopRingtone() {
