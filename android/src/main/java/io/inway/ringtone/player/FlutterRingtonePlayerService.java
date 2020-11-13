@@ -88,6 +88,7 @@ public class FlutterRingtonePlayerService extends Service {
                 .build();
 
         startForeground(1, notification);
+        unlockScreen();
     }
 
     private void stopRingtone() {
@@ -128,6 +129,13 @@ public class FlutterRingtonePlayerService extends Service {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("Class '" + className + "' not found");
         }
+    }
+
+    private void unlockScreen() {
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+        window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
     }
 
     private Ringtone getConfiguredRingtone(RingtoneMeta meta) {
