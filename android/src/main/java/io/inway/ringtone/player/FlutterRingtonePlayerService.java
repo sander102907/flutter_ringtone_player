@@ -94,8 +94,8 @@ public class FlutterRingtonePlayerService extends Service {
 
         startForeground(1, notification);
 
-        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "tag");
-        wl.acquire();
+        // PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "tag");
+        // wl.acquire();
         // Window.AddFlags(WindowManagerFlags.ShowWhenLocked | 
         //                 WindowManagerFlags.KeepScreenOn | 
         //                 WindowManagerFlags.DismissKeyguard | 
