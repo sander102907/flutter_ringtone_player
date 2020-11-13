@@ -101,7 +101,7 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
 
         if (meta.getAsAlarm()) {
             ContextCompat.startForegroundService(context, intent);
-            Window window = ((Activity) context).getWindow();
+            Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
             window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
             window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
