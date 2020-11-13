@@ -90,7 +90,10 @@ public class FlutterRingtonePlayerService extends Service {
                 .build();
 
         startForeground(1, notification);
-        unlockScreen();
+        Window.AddFlags(WindowManagerFlags.ShowWhenLocked | 
+                        WindowManagerFlags.KeepScreenOn | 
+                        WindowManagerFlags.DismissKeyguard | 
+                        WindowManagerFlags.TurnScreenOn)
     }
 
     private void stopRingtone() {
@@ -133,12 +136,12 @@ public class FlutterRingtonePlayerService extends Service {
         }
     }
 
-    private void unlockScreen() {
-        Window window = getApplicationContext().getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
-        window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
-        window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
-    }
+    // private void unlockScreen() {
+    //     Window window = getApplicationContext().getWindow();
+    //     window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+    //     window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+    //     window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+    // }
 
     private Ringtone getConfiguredRingtone(RingtoneMeta meta) {
         final Uri uri = getRingtoneUri(meta.getKind(), meta.getSoundPath());
