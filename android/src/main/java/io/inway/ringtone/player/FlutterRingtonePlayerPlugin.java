@@ -17,6 +17,8 @@ import java.util.Map;
 import java.util.HashMap;
 import android.view.WindowManager;
 import android.view.Window;
+import android.app.*;
+
 
 
 /**
