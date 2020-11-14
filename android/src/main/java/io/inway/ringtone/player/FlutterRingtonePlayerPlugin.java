@@ -19,7 +19,7 @@ import android.view.WindowManager;
 import android.view.Window;
 import android.app.*;
 import android.os.Build;
-import android.provider.Settings.System;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 
