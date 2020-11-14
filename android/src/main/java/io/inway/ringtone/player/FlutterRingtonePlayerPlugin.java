@@ -172,7 +172,7 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
                 System.out.println(Uri.parse("package:" + context.getPackageName()));
                 System.out.println(context.getPackageName());
                 // intent.setData();
-                // intent.setData(Uri.parse("package:" + context.getPackageName()));
+                intent.setData(Uri.parse("package:" + context.getPackageName()));
                 context.startActivity(intent);
             }   
         }
