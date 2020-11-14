@@ -12,10 +12,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
-import android.os.PowerManager;
-// import android.view.WindowManager;
-// import android.view.WindowManagerFlags;
-// import android.view.Window;
 
 
 public class FlutterRingtonePlayerService extends Service {
@@ -86,9 +82,9 @@ public class FlutterRingtonePlayerService extends Service {
                 .setSmallIcon(iconDrawableResourceId)
                 .setContentTitle(notificationMeta.getContentTitle())
                 .setContentText(notificationMeta.getContentText())
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .setSubText(notificationMeta.getSubText())
-                // .setContentIntent(pendingIntent)
                 .setFullScreenIntent(pendingIntent, true)
                 .build();
 
