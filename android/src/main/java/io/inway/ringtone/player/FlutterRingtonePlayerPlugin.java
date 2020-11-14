@@ -64,7 +64,7 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
                 result.success(getAlarmSounds());
             } 
             else if (methodName.equals("checkSystemWritePermission")) {
-                Class<?> activityClass = getMethodCallArgument(call, "alarmNotificationMeta", AlarmNotificationMeta.class).getActivityClassLaunchedByIntent();
+                Class<?> activityClass = Class.forName(getMethodCallArgument(call, "alarmNotificationMeta", AlarmNotificationMeta.class).getActivityClassLaunchedByIntent());
                 result.success(checkSystemWritePermission(activityClass));
             }
         } catch (Exception e) {
@@ -168,10 +168,10 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
                 Toast.makeText(context, "Write allowed :-)", Toast.LENGTH_LONG).show();
             }else{
                 Toast.makeText(context, "Write not allowed :-(", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS, activityClass);
                 System.out.println(Uri.parse("package:" + context.getPackageName()));
                 System.out.println(context.getPackageName());
-                intent.setData(activityClass);
+                // intent.setData();
                 // intent.setData(Uri.parse("package:" + context.getPackageName()));
                 context.startActivity(intent);
             }   
