@@ -161,12 +161,12 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
     private boolean checkSystemWritePermission() {
         boolean retVal = true;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            retVal = Settings.System.canWrite(this);
+            retVal = Settings.System.canWrite(context);
             Log.d("-", "Can Write Settings: " + retVal);
             if(retVal){
-                Toast.makeText(this, "Write allowed :-)", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Write allowed :-)", Toast.LENGTH_LONG).show();
             }else{
-                Toast.makeText(this, "Write not allowed :-(", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Write not allowed :-(", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
                 intent.setData(Uri.parse("package:" + context.getPackageName()));
                 context.startActivity(intent);
