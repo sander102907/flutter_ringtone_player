@@ -168,9 +168,11 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
             }else{
                 Toast.makeText(context, "Write not allowed :-(", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                System.out.println(Uri.parse("package:" + context.getPackageName()));
+                System.out.println(context.getPackageName());
                 intent.setData(Uri.parse("package:" + context.getPackageName()));
                 context.startActivity(intent);
-            }
+            }   
         }
         return retVal;
     }
