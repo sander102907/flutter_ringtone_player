@@ -18,7 +18,10 @@ import java.util.HashMap;
 import android.view.WindowManager;
 import android.view.Window;
 import android.app.*;
-
+import android.os.Build;
+import android.provider.Settings.System;
+import android.util.Log;
+import android.widget.Toast;
 
 
 /**
@@ -157,16 +160,16 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
 
     private boolean checkSystemWritePermission() {
         boolean retVal = true;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             retVal = Settings.System.canWrite(this);
-            Log.d(TAG, "Can Write Settings: " + retVal);
+            Log.d("-", "Can Write Settings: " + retVal);
             if(retVal){
                 Toast.makeText(this, "Write allowed :-)", Toast.LENGTH_LONG).show();
             }else{
                 Toast.makeText(this, "Write not allowed :-(", Toast.LENGTH_LONG).show();
-                FragmentManager fm = getFragmentManager();
-                PopupWritePermission dialogFragment = new PopupWritePermission();
-                dialogFragment.show(fm, "Please turn on write settings for this app to set a ringtone.");
+                Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                intent.setData(Uri.parse("package:" + context.getPackageName()));
+                context.startActivity(intent);
             }
         }
         return retVal;
