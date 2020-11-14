@@ -59,6 +59,9 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
             }
             else if (methodName.equals("getAlarmSounds")) {
                 result.success(getAlarmSounds());
+            } 
+            else if (methodName.equals("checkSystemWritePermission")) {
+                result.success(checkSystemWritePermission());
             }
         } catch (Exception e) {
             result.error("Exception", e.getMessage(), null);
@@ -150,5 +153,22 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
             } while (tonesCursor.moveToNext()); 
         }
         return sounds;
+    }
+
+    private boolean checkSystemWritePermission() {
+        boolean retVal = true;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            retVal = Settings.System.canWrite(this);
+            Log.d(TAG, "Can Write Settings: " + retVal);
+            if(retVal){
+                Toast.makeText(this, "Write allowed :-)", Toast.LENGTH_LONG).show();
+            }else{
+                Toast.makeText(this, "Write not allowed :-(", Toast.LENGTH_LONG).show();
+                FragmentManager fm = getFragmentManager();
+                PopupWritePermission dialogFragment = new PopupWritePermission();
+                dialogFragment.show(fm, "Please turn on write settings for this app to set a ringtone.");
+            }
+        }
+        return retVal;
     }
 }

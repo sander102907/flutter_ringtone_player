@@ -123,8 +123,14 @@ class FlutterRingtonePlayer {
     try {
       final Map result = await _channel.invokeMethod('getAlarmSounds');
       return result;
-    } catch (e) {
-      print(e);
-    }
+    } on PlatformException {}
+  }
+
+  static Future<Map> checkSystemWritePermission() async {
+    try {
+      final Map result =
+          await _channel.invokeMethod('checkSystemWritePermission');
+      return result;
+    } on PlatformException {}
   }
 }
