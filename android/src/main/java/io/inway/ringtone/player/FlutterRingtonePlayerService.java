@@ -74,10 +74,8 @@ public class FlutterRingtonePlayerService extends Service {
 
         final Class<?> activityClass = getActivityClassLaunchedByNotificationIntent(ringtoneMeta);
         final Intent notificationIntent = new Intent(this, activityClass);
-        // final Intent notificationIntent = new Intent(this, typeof(AlarmActivity));
         final int iconDrawableResourceId = getResources().getIdentifier(notificationMeta.getIconDrawableResourceName(), "drawable", getPackageName());
         final PendingIntent pendingIntent = PendingIntent.getActivity(this, requestID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        System.out.println(activityClass);
         final Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setSmallIcon(iconDrawableResourceId)
                 .setContentTitle(notificationMeta.getContentTitle())
@@ -89,13 +87,6 @@ public class FlutterRingtonePlayerService extends Service {
                 .build();
 
         startForeground(1, notification);
-
-        // PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "tag");
-        // wl.acquire();
-        // Window.AddFlags(WindowManagerFlags.ShowWhenLocked | 
-        //                 WindowManagerFlags.KeepScreenOn | 
-        //                 WindowManagerFlags.DismissKeyguard | 
-        //                 WindowManagerFlags.TurnScreenOn);
     }
 
     private void stopRingtone() {
