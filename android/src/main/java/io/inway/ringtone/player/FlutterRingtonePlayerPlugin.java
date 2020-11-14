@@ -19,9 +19,6 @@ import android.view.WindowManager;
 import android.view.Window;
 import android.app.*;
 import android.os.Build;
-import android.provider.Settings;
-import android.util.Log;
-import android.widget.Toast;
 
 
 /**
@@ -63,9 +60,6 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
             else if (methodName.equals("getAlarmSounds")) {
                 result.success(getAlarmSounds());
             } 
-            else if (methodName.equals("checkSystemWritePermission")) {
-                result.success(checkSystemWritePermission());
-            }
         } catch (Exception e) {
             result.error("Exception", e.getMessage(), null);
         }
@@ -156,25 +150,5 @@ public class FlutterRingtonePlayerPlugin implements MethodCallHandler {
             } while (tonesCursor.moveToNext()); 
         }
         return sounds;
-    }
-
-    private boolean checkSystemWritePermission() {
-        boolean retVal = true;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            retVal = Settings.System.canWrite(context);
-            Log.d("-", "Can Write Settings: " + retVal);
-            if(retVal){
-                Toast.makeText(context, "Write allowed :-)", Toast.LENGTH_LONG).show();
-            }else{
-                Toast.makeText(context, "Write not allowed :-(", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
-                System.out.println(Uri.parse("package:" + context.getPackageName()));
-                System.out.println(context.getPackageName());
-                // intent.setData();
-                intent.setData(Uri.parse("package:" + context.getPackageName()));
-                context.startActivity(intent);
-            }   
-        }
-        return retVal;
     }
 }
