@@ -31,6 +31,6 @@ public class AlarmNotificationMeta implements Serializable {
     }
 
     public int getColor() {
-        return (int) notificationMetaValues.get("color")
+        return (int) notificationMetaValues.get("color");
     }
 }
