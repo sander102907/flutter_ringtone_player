@@ -78,7 +78,7 @@ public class FlutterRingtonePlayerService extends Service {
         final PendingIntent pendingIntent = PendingIntent.getActivity(this, requestID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         final Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setSmallIcon(iconDrawableResourceId)
-                .setColor(Color.RED)
+                .setColor(notificationMeta.getColor())
                 .setContentTitle(notificationMeta.getContentTitle())
                 .setContentText(notificationMeta.getContentText())
                 .setPriority(NotificationCompat.PRIORITY_MAX)

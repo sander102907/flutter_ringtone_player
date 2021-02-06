@@ -29,4 +29,8 @@ public class AlarmNotificationMeta implements Serializable {
     public String getActivityClassLaunchedByIntent() {
         return (String) notificationMetaValues.get("activityClassLaunchedByIntent");
     }
+
+    public int getColor() {
+        return (int) notificationMetaValues.get("color")
+    }
 }

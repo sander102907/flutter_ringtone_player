@@ -4,9 +4,11 @@ class AlarmNotificationMeta {
   final String contentTitle;
   final String contentText;
   final String subText;
+  final int color;
 
-  AlarmNotificationMeta(this.activityClassLaunchedByIntent, this.iconDrawableResourceName,
-      {this.contentTitle, this.contentText, this.subText});
+  AlarmNotificationMeta(
+      this.activityClassLaunchedByIntent, this.iconDrawableResourceName,
+      {this.contentTitle, this.contentText, this.subText, this.color});
 
   Map<String, dynamic> toMap() => {
         'activityClassLaunchedByIntent': activityClassLaunchedByIntent,
@@ -14,5 +16,6 @@ class AlarmNotificationMeta {
         'contentTitle': contentTitle,
         'contentText': contentText,
         'subText': subText,
+        'color': color,
       };
 }
