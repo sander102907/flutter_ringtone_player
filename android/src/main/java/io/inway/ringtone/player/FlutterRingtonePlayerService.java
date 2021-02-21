@@ -147,9 +147,16 @@ public class FlutterRingtonePlayerService extends Service {
                 ringtone.setVolume(meta.getVolume());
             }
         }
-        // if (meta.getAsAlarm()) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes aa = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ALARM)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .build();
+            ringtone.setAudioAttributes(aa);
+        } else {
             ringtone.setStreamType(AudioManager.STREAM_ALARM);
-        // }
+        }
 
         return ringtone;
     }
